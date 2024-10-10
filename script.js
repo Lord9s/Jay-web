@@ -13,7 +13,7 @@ async function sendMessage() {
     startTypingAnimation(loadingMessage);
 
     try {
-        const response = await fetch(`https://kora-ai.onrender.com/koraai?query=${encodeURIComponent(userMessage)}`);
+        const response = await fetch(`https://Lord-ai.onrender.com/Lordai?query=${encodeURIComponent(userMessage)}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -27,7 +27,7 @@ async function sendMessage() {
         console.error('Error:', error);
         stopTypingAnimation();
         loadingMessage.remove();
-        appendMessage('Error: Kora could not respond at the moment. Please try again later.', 'bot');
+        appendMessage('Error: Junior could not respond at the moment. Please try again later.', 'bot');
     }
 
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
