@@ -1,326 +1,53 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lord AI</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: blue;
-            color: green;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Top Bar Styles */
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background-color: #1a1a1a;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 1000;
-        }
-
-        .hamburger {
-            width: 40px; /* Smaller size */
-            height: 40px; /* Smaller size */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        .hamburger svg {
-            width: 80%; /* SVG adjusted to fit inside the smaller size */
-            height: 80%;
-            fill: white;
-        }
-
-        .main {
-            width: 100%;
-            height: calc(100vh - 120px);
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            background: Yellow;
-            margin-top: 60px;
-            overflow: auto;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .contain {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Message Box Styles */
-        .message-box {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background-color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.1);
-            justify-content: flex-end; /* Align input to the right */
-        }
-
-        .input-field {
-            height: 40px;
-            background-color: #2a2a2a;
-            color: red;
-            border: none;
-            border-radius: 20px;
-            padding: 0 10px;
-            margin-right: 10px; /* Add margin to separate from button */
-        }
-
-        .send-button {
-            height: 40px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            padding: 0 20px;
-        }
-
-        /* Chat Display Styles */
-        #chatDisplay {
-            width: 100%;
-            height: calc(100% - 60px);
-            overflow-y: auto;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .message-container {
-            margin: 5px 0;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .message {
-            padding: 10px;
-            border-radius: 5px;
-            color: purple;
-            margin-left: 10px;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-
-        .user {
-            justify-content: flex-end; /* Align user messages to the right */
-        }
-
-        .user .message {
-            background-color: #007BFF;
-            border-radius: 20px 20px 20px 0;
-            margin-left: 0; /* Remove left margin for user messages */
-            margin-right: 10px; /* Add right margin for spacing */
-        }
-
-        .bot .message {
-            background-color: #444;
-            border-radius: 20px 20px 0 20px;
-        }
-
-        .loading {
-            color: pink;
-        }
-
-        /* Outer Circle Menu */
-        .outer {
-            width: 0px;
-            height: 0px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background: transparent;
-            z-index: 1;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: all .35s ease;
-        }
-
-        .isOpen {
-            width: 250px;
-            height: 250px;
-            background-color: rgba(0, 0, 0, 0.8);
-            transform: translate(-50%, -50%) rotate(360deg);
-        }
-
-        .inner {
-            width: 30%;
-            height: 26%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background: #AACCE0;
-            position: relative;
-            left: 2%;
-            cursor: pointer;
-            transition: box-shadow .5s ease;
-        }
-
-        .inner img {
-            width: 50%;
-            height: 50%;
-        }
-
-        .inner:hover {
-            box-shadow: 0 0px 15px #f0f0ee;
-        }
-
-        .inner:nth-child(2) {
-            background: #7B9EB2;
-            position: relative;
-            top: -36.75%;
-            left: 12%;
-        }
-
-        .inner:nth-child(3) {
-            background: #092D42;
-            position: relative;
-            top: 37%;
-            left: -12%;
-        }
-
-        .inner:nth-child(4) {
-            background: #347AA3;
-            position: relative;
-            left: -2%;
-        }
-    </style>
+  <title>Owner Social Media Profiles</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .social-media-icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+  </style>
 </head>
-<body onkeydown="handleEnter(event)">
-    <div class="top-bar">
-        <div class="hamburger" id="cover">
-            <!-- SVG Hamburger Icon -->
-            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="3" rx="1.5" />
-                <rect y="13.5" width="30" height="3" rx="1.5" />
-                <rect y="27" width="30" height="3" rx="1.5" />
-            </svg>
-        </div>
-        <h1>CortexAI</h1>
-    </div>
-    <div class="outer" id="outer">
-        <div class="inner"><img src="https://res.cloudinary.com/dsp6kqag8/image/upload/v1468198589/Home_drcqdz.svg" /></div>
-        <div class="inner"><img src="https://res.cloudinary.com/dsp6kqag8/image/upload/v1468198589/Box_vkpkbm.svg" /></div>
-        <div class="inner"><img src="https://res.cloudinary.com/dsp6kqag8/image/upload/v1468198589/Calendar_g4okow.svg" /></div>
-        <div class="inner"><img src="https://res.cloudinary.com/dsp6kqag8/image/upload/v1468198589/Rating_limkrw.svg" /></div>
-    </div>
-    <div class="main">
-        <div class="contain" id="chatDisplay"></div>
-    </div>
-    <div class="message-box">
-        <input type="text" id="userInput" class="input-field" placeholder="Type your message...">
-        <button class="send-button" onclick="sendMessage()">Send</button>
-    </div>
+<body>
 
-    <script>
-        let typingInterval;
+  <h1>Owner Social Media</h1>
+  
+  <h2>Social Media Profiles</h2>
+  <ul>
+    <li><span class="social-media-icon">&#xf09a;</span> Facebook: <b>Lord King</b></li>
+    <li><span class="social-media-icon">&#xf16d;</span> Instagram: <b>Jayden01</b></li>
+    <li><span class="social-media-icon">&#xf0e1;</span> LinkedIn: <b>Jayden Smith</b></li>
+  </ul>
 
-        async function sendMessage() {
-            const inputField = document.getElementById('userInput');
-            const chatDisplay = document.getElementById('chatDisplay');
-            const userMessage = inputField.value.trim();
+  <h2>Contact Information</h2>
+  <p>For more information or to connect with the owner, please use the following contact details:</p>
+  <ul>
+    <li><b>Name:</b>jayden smith</li>
+    <li><b>Email:</b>jaydensmith01@gmail.com</li>
+    <li><b>Phone:</b>private</li>
+  </ul>
 
-            if (userMessage === '') return;
+  <h2>About the Owner</h2>
+  <p>Soft whispers of a gentle breeze,
+Dance upon my troubled seas,
+The stars above, a twinkling show,
+Peaceful calm, my soul does know.</p>
 
-            appendMessage(userMessage, 'user');
-            inputField.value = '';
-            const loadingMessage = appendMessage('Typing', 'bot', true);
-            startTypingAnimation(loadingMessage);
-
-            try {
-                const response = await fetch(`https://ai-kohl-xi.vercel.app/perfect?query=${encodeURIComponent(userMessage)}`);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                stopTypingAnimation();
-                loadingMessage.remove();
-                appendMessage(data.response, 'bot');
-            } catch (error) {
-                console.error('Error:', error);
-                stopTypingAnimation();
-                loadingMessage.remove();
-                appendMessage('Error: Could not fetch response. Please try again later.', 'bot');
-            }
-
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
-        }
-
-        function appendMessage(messageText, sender, isLoading = false) {
-            const chatDisplay = document.getElementById('chatDisplay');
-            const messageContainer = document.createElement('div');
-            messageContainer.classList.add('message-container', sender);
-
-            if (sender === 'bot') {
-                const profileDiv = document.createElement('div');
-                profileDiv.classList.add('robot-profile');
-                messageContainer.appendChild(profileDiv);
-            }
-
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            messageDiv.textContent = messageText;
-
-            if (isLoading) {
-                messageDiv.classList.add('loading');
-            }
-
-            messageContainer.appendChild(messageDiv);
-            chatDisplay.appendChild(messageContainer);
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
-
-            return messageDiv;
-        }
-
-        function startTypingAnimation(loadingMessage) {
-            let dotCount = 0;
-            typingInterval = setInterval(() => {
-                dotCount = (dotCount + 1) % 4;
-                loadingMessage.textContent = 'Typing' + '.'.repeat(dotCount);
-            }, 500);
-        }
-
-        function stopTypingAnimation() {
-            clearInterval(typingInterval);
-        }
-
-        document.getElementById('cover').addEventListener('click', () => {
-            const outer = document.getElementById('outer');
-            outer.classList.toggle('isOpen');
-        });
-
-        function handleEnter(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-    </script>
 </body>
 </html>
